@@ -3,6 +3,19 @@
     <div class="col-6 mx-auto">
       <%= @user.name %></br>
       <%= @user.email %>
+      <div>
+        <%= link_to "#{@user.followings.count} following", follows_user_path(@user)%>
+        <%= link_to "#{@user.followers.count} follower", followers_user_path(@user) %>
+      </div>
+      <% if current_user != @user %>
+        <div>
+          <% if @user.followed_by?(current_user)%>
+            <%= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %>
+          <% else %>
+            <%= link_to "フォロー", user_relationships_path(@user.id), method: :post %>
+          <% end %>
+        </div>
+      <% end %>
     </div> 
   </div>
 </div>

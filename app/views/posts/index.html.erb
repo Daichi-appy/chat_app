@@ -27,6 +27,7 @@
               <div class="card-body">
                 <p class="card-text" id="title">
                   <%= p.title%>
+                  <%= link_to "#{p.user.name}", user_path(p.user) %>
                 </p>
                 <p class="card-text"><%= p.body %></p>
                 <p class="card-text">
