@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'posts#index'
+  get 'chats/index'
+  get 'chats/:id' => 'chats#show', as: 'chat'
   get 'users/index', to: "users#index"
   devise_for :users
   devise_scope :user do
@@ -12,5 +14,6 @@ Rails.application.routes.draw do
     get :followers, on: :member
   end
   resources :posts, only: [:index, :create, :destroy]
+  resources :chats, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

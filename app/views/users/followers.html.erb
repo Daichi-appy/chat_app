@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col mx-auto">
       <% @users.each do |user| %>
-        <%= link_to "#{user.name}", user_path(user) %>
+        <p><%= link_to "#{user.name}", user_path(user) %></p>
       <% end %>
     </div>
   </div>
