@@ -17,9 +17,15 @@ class User < ApplicationRecord
   has_many :user_rooms
   has_many :chats
   has_many :rooms, through: :user_rooms
+  has_many :likes
 
   def followed_by?(user)
     #自分が相手をフォローしているかどうか
     passive_relationships.find_by(following_id: user.id).present?
   end
+
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
+
 end
