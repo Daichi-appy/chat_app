@@ -22,18 +22,28 @@
           <div>
             <h2 align="center"><%= "投稿一覧　#{@posts.count} posts" %></h2>
           </div>
-          <% @posts.each do |p| %>
+          <% @posts.each do |post| %>
             <div class="card mb-1">
               <div class="card-body">
+                <p><%= link_to "#{post.user.name}", user_path(post.user) %></p>
                 <p class="card-text" id="title">
-                  <%= p.title%>
-                  <%= link_to "#{p.user.name}", user_path(p.user) %>
+                  <strong><%= post.title%></strong>
                 </p>
-                <p class="card-text"><%= p.body %></p>
+                <p class="card-text"><%= post.body %></p>
                 <p class="card-text">
-                  <small class="text-muted">更新日: <%= p.updated_at.strftime("%Y-%m-%d-%H")%></small>
-                  <%= link_to "削除", "/posts/#{p.id}", class: "btn btn-danger", method: :delete, data: { confirm: "削除しますか？" }  %>
+                  <small class="text-muted">更新日: <%= post.updated_at.strftime("%Y-%m-%d-%H")%></small>
+                  <%= link_to "削除", "/posts/#{post.id}", class: "btn btn-danger", method: :delete, data: { confirm: "削除しますか？" }  %>
                 </p>
+                <% if current_user.already_liked?(post) %>
+                  <%= link_to post_likes_path(post), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(post), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+                <%= post.likes.count %>
               </div>
             </div>
           <% end %>
