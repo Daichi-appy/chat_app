@@ -1,0 +1,42 @@
+<%# 投稿内容表示 %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <%= link_to "Top", posts_path %>
+      <div class="card mb-1">
+          <div class="card-body">
+            <p class="card-text" id="title"><strong><%= @post.title %></strong></p>
+            <p class="card-text"><%= @post.body %></p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# コメント表示部分 %>
+<div class="row mt-5 ">
+  <div class="col-3 mx-auto">
+    <% @comments.each do |comment| %>
+      <div class="mb-3">
+        <%= "投稿者: #{comment.user.name}" %><br>
+        <%= comment.content %>
+        <% if current_user == comment.user %>
+          <%= link_to "削除", post_comment_path(post_id: @post.id, id: comment.id), class: "btn btn-danger", method: :delete, data: { confirm: "削除しますか？"}%>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<%# コメント書き込み部分 %>
+
+<div class="row mt-5">
+    <div class="col-3 mx-auto">
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.label :content, "コメント" %>
+        <%= f.text_area :content, class: "form-control" %>
+        <%= f.submit "投稿", class: "btn btn-primary mt-3" %>
+      <% end %>
+    </div>
+</div>

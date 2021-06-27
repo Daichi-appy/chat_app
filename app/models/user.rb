@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :chats
   has_many :rooms, through: :user_rooms
   has_many :likes
+  has_many :comments
 
   def followed_by?(user)
     #自分が相手をフォローしているかどうか
