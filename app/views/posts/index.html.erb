@@ -3,7 +3,8 @@
     <%# 投稿画面 %>
     <div class="col-3 mt-5">
       <div class="form">
-        <%= form_with model: @post, local: true do |f| %>
+        <%= form_with model: @post do |f| %>
+        <%= render 'shared/error_messages', object: f.object %> 
           <div class="form-group">
             <%= f.label :title, "タイトル" %>
             <%= f.text_field :title, class: "form-control" %>

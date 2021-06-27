@@ -4,10 +4,11 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
+    @comments = @post.comments.all
     if @comment.save
       redirect_to post_path(@post)
     else
-      render post_path
+      render 'posts/show'
     end
   end
 

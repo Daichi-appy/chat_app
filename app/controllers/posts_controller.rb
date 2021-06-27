@@ -7,13 +7,14 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.all   
-    @comment = Comment.new  
+    @comments = @post.comments.all
+    @comment = Comment.new
   end
 
   def create
     @post = Post.create(user_params)
     @post.user_id = current_user.id
+    @posts = Post.all
     if @post.save
       redirect_to posts_path
     else
