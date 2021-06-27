@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'likes/create'
-  get 'likes/destroy'
   root 'posts#index'
   get 'chats/index'
   get 'chats/:id' => 'chats#show', as: 'chat'
@@ -17,7 +15,8 @@ Rails.application.routes.draw do
     get :followers, on: :member
   end
 
-  resources :posts, only: [:index, :create, :destroy] do
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
   resources :chats, only: [:create]
