@@ -1,13 +1,12 @@
 require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get users_index_url
-    assert_response :success
+  include Devise::Test::IntegrationHelpers
+
+  def setup
+    @user = users(:john)
+    sign_in @user
+    @post = Post.new(title: "Lorem ipsum", body: "foo bar", user_id: @user.id)
   end
 
-  test "should get show" do
-    get users_show_url
-    assert_response :success
-  end
 end

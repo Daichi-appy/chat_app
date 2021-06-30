@@ -1,8 +1,15 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get posts_index_url
-    assert_response :success
+  include Devise::Test::IntegrationHelpers
+
+  def setup
+    @user = users(:john)
   end
+
+  # test "正常にアクセスできること" do
+  #   sign_in @user
+  #   get root_path
+  #   assert_response :success
+  # end
 end
