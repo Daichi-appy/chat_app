@@ -29,9 +29,8 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'minitest', '~> 5.12', '>= 5.12.2'
+  gem 'minitest-reporters', '~> 1.4', '>= 1.4.3'
 end
 
 group :production do

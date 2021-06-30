@@ -13,7 +13,7 @@
             <%= f.label :body, "本文" %>
             <%= f.text_area :body, class: "form-control"%>
           </div>
-            <%= f.submit "投稿する", class: "btn btn-primary mt-3" %>
+            <%= f.submit "投稿する", class: "btn btn-primary mt-3", data: { "disable-with": "保存しています..."} %>
         <% end %>
       </div>
     </div>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   #自分がフォローしているユーザーとの関連
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
