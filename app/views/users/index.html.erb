@@ -1,10 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col mt-5">
+    <div class="col-6 mt-5 mx-auto">
       <% @users.each do |user| %>
-        <div>
-          <%= link_to "#{user.name}", user_path(user) %>
-        </div>
+          <p><%= link_to "#{user.name}", user_path(user) %></p>
       <% end %>
     </div>
   </div>
