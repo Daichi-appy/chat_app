@@ -34,3 +34,38 @@ body {
   text-align: center;
   font-size: 13px;
 }
+
+// message
+
+#head {
+  text-align: center;
+  color: white;
+  background-color: #273246;
+  padding: 10px;
+}
+
+td {
+  border: none;
+}
+
+.chat-left {
+  float: left;
+  position: relative;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 10px;
+  margin: auto;
+}
+
+.chat-right {
+  float: right;
+  position: relative;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 10px;
+  margin: auto;
+}
+
+
