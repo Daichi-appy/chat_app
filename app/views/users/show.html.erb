@@ -10,8 +10,8 @@
       <% if current_user != @user %>
         <div>
           <% if @user.followed_by?(current_user)%>
-            <%= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %>
-            <%= link_to "Chatする!", chat_path(@user.id) %>
+            <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete %>
+            <%= link_to "Chatする!", room_path(@user.id) %>
           <% else %>
             <%= link_to "フォロー", user_relationships_path(@user.id), method: :post %>
           <% end %>

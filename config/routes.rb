@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'posts#index'
-  get 'chats/index'
-  get 'chats/:id' => 'chats#show', as: 'chat'
+  get 'rooms/:id' => 'rooms#show', as: 'room'
   get 'users/index', to: "users#index"
+  post 'guests/guest_sign_in', to: 'guests#new_guest'
   devise_for :users
   devise_scope :user do
     #deviseのsign_upが失敗した時の処理
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
-  resources :chats, only: [:show, :create]
+  resources :rooms, only: [:index, :show]
+  resources :chats, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
