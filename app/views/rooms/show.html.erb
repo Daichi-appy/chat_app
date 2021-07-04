@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+
+      <h2 id="head"><%= @user.name %>さん</h2>
+      <table class="message table">
+        <% @chats.each do |chat| %>
+          <% if chat.user_id == current_user.id %>
+          <tr>
+            <td>
+                <p class="chat-left"><%= chat.message %></p>
+            </td>
+          </tr>
+          <% else %>
+          <tr>
+            <td>
+                <p class="chat-right"><%= chat.message %></p>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
+      </table>
+
+      <%= form_with model: @chat do |f| %>
+        <%= f.text_field :message, placeholder: "メッセージを入力して下さい", class: "form-control"%>
+        <%= f.hidden_field :room_id %>
+        <%= f.submit "送信する", class: "btn btn-primary mt-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>
