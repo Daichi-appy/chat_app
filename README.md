@@ -1,3 +1,6 @@
+
+https://appy-chat-app.herokuapp.com/users/sign_in
+
 ## 主な技術
 * Ruby(2.6.6)
 * Rails(6.1.3)
