@@ -37,16 +37,9 @@
                     <%= link_to "削除", "/posts/#{post.id}", class: "btn btn-danger", method: :delete, data: { confirm: "削除しますか？" }  %>
                   <% end %>
                 </p>
-                <% if current_user.already_liked?(post) %>
-                  <%= link_to post_likes_path(post), method: :delete do %>
-                    <i class="fas fa-heart"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to post_likes_path(post), method: :post do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
-                <% end %>
-                <%= post.likes.count %>
+                <div id="like-button_<%= post.id %>">
+                  <%= render partial: 'posts/likes', locals: { post: post} %>
+                </div>
                 <%= "コメント: #{post.comments.count}"%>
               </div>
             </div>
