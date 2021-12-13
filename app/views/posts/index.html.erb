@@ -4,7 +4,7 @@
     <div class="col-3 mt-5">
       <div class="form">
         <%= form_with model: @post do |f| %>
-        <%= render 'shared/error_messages', object: f.object %> 
+        <%= render 'shared/error_messages', object: f.object %>
           <div class="form-group">
             <%= f.label :title, "タイトル" %>
             <%= f.text_field :title, class: "form-control" %>
@@ -17,14 +17,16 @@
         <% end %>
       </div>
     </div>
+
     <%# 投稿一覧画面 %>
     <div class="col-6 mt-5">
         <div class="index">
           <div>
             <h2 align="center"><%= "投稿一覧　#{@posts.count} posts" %></h2>
           </div>
+          <div class="border-bottom border-dark mb-4"></div>
           <% @posts.each do |post| %>
-            <div class="card mb-1">
+            <div class="card border-dark mb-1">
               <div class="card-body">
                 <p><%= link_to "#{post.user.name}", user_path(post.user) %></p>
                 <p class="card-text" id="title">

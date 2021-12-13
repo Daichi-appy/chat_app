@@ -1,22 +1,32 @@
-<div class="container mt-3">
+<div class="container mt-5">
   <div class="row">
     <div class="col-6 mx-auto">
-      <%= @user.name %></br>
-      <%= @user.email %>
-      <div>
-        <%= link_to "#{@user.followings.count} following", follows_user_path(@user)%>
-        <%= link_to "#{@user.followers.count} follower", followers_user_path(@user) %>
-      </div>
-      <% if current_user != @user %>
-        <div>
-          <% if @user.followed_by?(current_user)%>
-            <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete %>
-            <%= link_to "Chatする!", room_path(@user.id) %>
-          <% else %>
-            <%= link_to "フォロー", user_relationships_path(@user.id), method: :post %>
+
+      <div class="card border-dark">
+        <div class="card-body">
+          <div class="card-title">
+            <h3>
+              <%= @user.name %></br>
+            </h3>
+            <%= @user.email %>  
+          </div>
+            <%= link_to "#{@user.followings.count} following", follows_user_path(@user)%>
+            <%= link_to "#{@user.followers.count} follower", followers_user_path(@user) %>
+          <%# 自分以外のユーザーなら %>
+          <% if current_user != @user %>
+            <div>
+              <% if @user.followed_by?(current_user)%>
+                <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete %>
+                <%= link_to "Chatする!", room_path(@user.id) %>
+              <% else %>
+                <%= link_to "フォロー", user_relationships_path(@user.id), method: :post %>
+              <% end %>
+            </div>
           <% end %>
         </div>
-      <% end %>
+      </div>
+
+
     </div> 
   </div>
 </div>
