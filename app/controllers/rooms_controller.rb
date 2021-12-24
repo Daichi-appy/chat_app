@@ -2,6 +2,11 @@ class RoomsController < ApplicationController
 
   def index
     @users = current_user.followings
+    # それぞれのユーザーのメッセージを取ってくる
+    # current_user_id = current_user.id
+    # @users フォローしている人それぞれのID
+    # room_id = 
+    # @message = Message.where(user_id: 自分, room_id:)
   end
 
 

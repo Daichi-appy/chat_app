@@ -4,6 +4,7 @@
       <% @users.each do |user| %>
         <div class="card border-dark mt-3">
             <p><%= link_to "#{user.name}", room_path(user.id) %><p>
+            <p>最新のメッセージ</p>
         </div>
       <% end %>
     </div>
